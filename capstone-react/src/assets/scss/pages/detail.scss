@@ -1,0 +1,348 @@
+// style phần riêng từng trang
+// @import url(../themes/_variable.scss);
+.Product__Detail {
+    .container {
+        // display: flex;
+        // flex-direction: row;
+        margin-top: 57px;
+
+        .Detail-crs {
+            display: flex;
+            margin-left: 65px;
+
+            .img-product {
+                width: 450px;
+                height: 355px;
+                left: 65px;
+                top: 58px;
+                background-color: #F8F8F8;
+
+                img {
+                    width: 220px;
+                    height: auto;
+                    margin-top: 76px;
+                    margin-left: 70px;
+                }
+            }
+
+            .Product__Detail__right {
+                .Product__Item {
+                    margin-left: 127px;
+                    margin-right: 250px;
+
+                    h1 {
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 40px;
+                        line-height: 48px;
+                        color: black;
+                    }
+
+                    h2 {
+                        color: #1ED90E;
+                        margin-top: 10px;
+                        font-weight: 500;
+                        font-size: 24px;
+                    }
+
+                    .Item-monney {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 30px;
+                        line-height: 36px;
+                        color: #FC0303;
+                        margin-top: 10px;
+                    }
+                }
+
+                .Product__Item1 {
+                    display: flex;
+                    margin-left: 127px;
+                    margin-right: 250px;
+
+                    .item-number {
+                        // width: 50px;
+                        // height: 50px;
+                        // background-color: #CCCCCC;
+                        // margin-right: 21px;
+                        // padding: 10px;
+
+                        button {
+                            width: 50px;
+                            height: 50px;
+                            color: #000000;
+                            font-size: 24px;
+                            background-color: #CCCCCC;
+                            margin-right: 21px;
+                            padding: 10px;
+                            border: none;
+                        }
+                    }
+                }
+
+                .Product__Item__Button {
+                    display: flex;
+                    margin-left: 127px;
+                    margin-right: 250px;
+
+                    button {
+                        width: 50px;
+                        height: 50px;
+                        background-color: #6181F3;
+                        margin-right: 21px;
+                        border: none;
+                        margin-bottom: 10px;
+                    }
+
+                    p {
+                        font-weight: 400;
+                        font-style: normal;
+                        font-size: 30px;
+                        line-height: 36px;
+                        margin-right: 21px;
+                    }
+                }
+
+                .Product__Item__Button2 {
+                    margin-left: 127px;
+                    margin-right: 250px;
+
+                    button {
+                        width: 175px;
+                        height: 64px;
+                        left: 527px;
+                        top: 427px;
+                        background: linear-gradient(270deg, rgba(62, 32, 248, 0.9) 5.14%, #D017EE 89.71%);
+                        border: none;
+
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 500;
+                        font-size: 24px;
+                        line-height: 29px;
+
+                        color: #FFF8F8;
+
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.Relate__Product {
+    padding: 50px 0;
+
+    .container {
+        .Relate__text {
+            margin-top: 47px;
+            margin-bottom: 47px;
+
+            h1 {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 40px;
+                line-height: 48px;
+                color: black;
+            }
+        }
+
+        .row {
+            .col-4 {
+                .card {
+                    border: none;
+                    background-color: #F8F8F8;
+
+                    // img {
+
+                    // }
+                }
+
+                .card-body {
+                    // background-color: #F8F8F8;
+                    h2 {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 24px;
+                        line-height: 29px;
+                        margin-left: 20px;
+                    }
+
+                    p {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 20px;
+                        line-height: 24px;
+                        margin-left: 20px;
+                        color: #CBC9C9;
+                    }
+                }
+
+                .card-footer {
+                    display: flex;
+                    padding: 0%;
+
+                    .btn {
+                        width: 100%;
+                        background: #e1b067;
+                        border-radius: 0;
+                        padding: 18px 40px;
+                        font-size: 24px;
+                        font-weight: 300;
+                    }
+
+                    span {
+                        width: 100%;
+                        text-align: center;
+                        background-color: #dedddc;
+                        padding: 18px 40px;
+                        font-size: 24px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+
+        // .row {
+        //     display: flex;
+        //     flex-wrap: wrap;
+
+        //     .Product__Relate__img {
+        //         position: relative;
+        //         width: calc(100% / 3);
+        //         padding-right: 15px;
+        //         padding-left: 15px;
+        //         margin: 15px 0;
+        //         margin-bottom: 47px;
+
+        //         .img-Relate {
+        //             width: 334px;
+        //             height: 369px;
+        //             left: 65px;
+        //             top: 58px;
+        //             background-color: #F8F8F8;
+
+        //             img {
+        //                 width: 220px;
+        //                 height: 156px;
+        //                 margin-top: 45px;
+        //                 margin-left: 57px;
+        //                 margin-bottom: 45px;
+        //             }
+
+        //             h1 {
+        //                 font-family: 'Inter';
+        //                 font-style: normal;
+        //                 font-weight: 300;
+        //                 font-size: 24px;
+        //                 line-height: 29px;
+        //                 margin-left: 20px;
+        //             }
+
+        //             p {
+        //                 font-family: 'Inter';
+        //                 font-style: normal;
+        //                 font-weight: 300;
+        //                 font-size: 20px;
+        //                 line-height: 24px;
+        //                 margin-left: 20px;
+        //                 color: #CBC9C9;
+        //             }
+
+        //             .relate-button {
+        //                 display: flex;
+
+        //                 .relate-button-1 {
+        //                     @include button();
+        //                 }
+
+        //                 .relate-button-2 {
+        //                     @include button-2();
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+    }
+}
+
+.blog-post {
+    background-color: #F8F8F8;
+
+    padding: 20px;
+
+    .container {
+        .col-4 {
+            .blog__item {
+                display: grid;
+                grid-template-columns: 300px 300px 400px;
+                column-gap: 48px;
+                margin-left: 90px;
+
+                .item {
+                    h1 {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 20px;
+                        color: #000000;
+                    }
+
+                    p {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 12px;
+                        margin-bottom: 0;
+                    }
+                }
+
+                .item2 {
+                    border-left: 2px solid #CCCCCC;
+                    padding: 0 0 0 8px;
+
+                    h1 {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 20px;
+                        color: #000000;
+                    }
+
+                    p {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 12px;
+                        margin-bottom: 0;
+                    }
+                }
+
+                .item3 {
+                    border-left: 2px solid #CCCCCC;
+                    padding: 0 0 0 8px;
+
+                    h1 {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 20px;
+                        color: #000000;
+                    }
+
+                    p {
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 300;
+                        font-size: 12px;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+@import url(./base/_base.scss);
+
+@import url(./layout/header.scss);
+@import url(./layout/footer.scss);
+@import url(./layout/navbar.scss);
+
+// -----------
+@import url(./pages/index.scss);
+@import url(./pages/detail.scss);
+
+//-----
+
+@import url(./themes/_variable.scss);
