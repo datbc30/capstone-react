@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default function HeaderHome() {
   return (
@@ -8,12 +9,16 @@ export default function HeaderHome() {
       <img src="./img/image3.png" alt="logo" />
     </div>
     <div className="user-interact">
+      <div className="header-search">
+        <i className="fa fa-search"></i>
+        <NavLink to="/search">Search</NavLink>
+      </div>
       <div className="cart">
         <img src="./img/image8.png" alt="cart" />
-        <span>(1)</span>
+        <span>()</span>
       </div>
       <div className="user-login">
-        <a href="#">Login</a>
+        <NavLink to="/register">Login</NavLink>
       </div>
       <div className="user-register">
         <a href="./resigter.html">Register</a>

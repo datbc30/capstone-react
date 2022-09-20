@@ -7,6 +7,14 @@
       justify-content: space-between;
       align-items: center;
       .user-interact {
+        .header-search {
+          i {
+            color: #fff;
+          }
+          a {
+            margin-left: 0;
+          }
+        }
         display: flex;
         justify-content: space-around;
         align-items: center;

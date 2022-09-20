@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route  } from 'react-router-dom'
 import IndexProduct from './Pages/IndexProduct/IndexProduct';
 import DetailProduct from './Pages/DetailProduct/DetaiProduct'
 import './assets/scss/styles.scss'
+import RegisterProduct from './Pages/RegisterProduct/RegisterProduct';
+import SearchProduct from './Pages/SearchProduct/SearchProduct';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,6 +24,8 @@ root.render(
           <Route path='detail'>
             <Route path=':id' element={<DetailProduct />}></Route>
           </Route>
+          <Route path='register' element={<RegisterProduct />}></Route>
+          <Route path='search' element={<SearchProduct />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
