@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
   arrProduct: [],
   productList: [],
+  addToCart: 1
 };
 
 const productReducer = createSlice({
@@ -20,10 +21,14 @@ const productReducer = createSlice({
       const productList = action.payload;
       state.productList = productList;
     },
+    addToCartAction : (state,action) => {
+      const addToCart = action.payload
+      state.addToCart = addToCart
+    }
   },
 });
 
-export const { getProductAction, getProductListAction } =
+export const { getProductAction, getProductListAction,addToCartAction } =
   productReducer.actions;
 
 export default productReducer.reducer;

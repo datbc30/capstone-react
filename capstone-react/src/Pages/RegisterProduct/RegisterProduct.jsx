@@ -1,15 +1,21 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { getSignUpApi } from "../../redux/reducer/useReducer";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterProduct(props) {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const frm = useFormik({
     initialValues: {
-      email: "",
-      password: "",
-      passwordConfirm: "",
-      name: "",
-      phone: "",
+      email: "vuthanhdat999@gmail.com",
+      password: "datga",
+      passwordConfirm: "datga",
+      gender:"true",
+      name: "dat",
+      phone: "0922973414",
     },
     validationSchema: Yup.object().shape({
       email: Yup.string()
@@ -20,6 +26,13 @@ export default function RegisterProduct(props) {
       name: Yup.string().required("name không được để trống !"),
       phone: Yup.string().required("phone không được để trống !"),
     }),
+    onSubmit: async (values) => {
+      console.log(values);
+      const message = await dispatch(getSignUpApi(values))
+      navigate('/home')
+      alert (message)
+
+    }
   });
 
   return (
@@ -177,7 +190,7 @@ export default function RegisterProduct(props) {
                     </label>
                   </div>
                 </div>
-                <button id="submit" className="btn-submit" type="button">
+                <button id="submit" className="btn-submit" type="submit">
                   Submit
                 </button>
               </div>

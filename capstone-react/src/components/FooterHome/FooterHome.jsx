@@ -3,7 +3,7 @@ import React from "react";
 export default function FooterHome() {
   return (
     <footer className="footer">
-      <div className="footer-top  footer-element">
+      <div className="footer-top  footer-element text-center">
         <div className="container">
           <div className="row">
             <div className="col-4">
@@ -40,7 +40,7 @@ export default function FooterHome() {
       </div>
       <div className="footer-bottom footer-element">
         <div className="container">
-          <div className="text-footer">
+          <div className="text-footer text-center">
             <p>© 2022 Cybersoft All Rights Reserved | Design Theme by Vũ Thành Đạt.</p>
           </div>
         </div>

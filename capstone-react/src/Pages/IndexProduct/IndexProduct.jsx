@@ -18,8 +18,7 @@ export default function IndexProduct() {
   }, []);
   const renderSplice = () => {
     return arrProduct.map((item, index) => {
-
-      if (index === 0 || arrProduct.length === 1){
+      if (index === 0 || arrProduct.length === 1) {
         return (
           <div className="carousel-item active" key={index}>
             <div className="carousel-item-content">
@@ -36,7 +35,7 @@ export default function IndexProduct() {
             </div>
           </div>
         );
-      }else{
+      } else {
         return (
           <div className="carousel-item" key={index}>
             <div className="carousel-item-content">
@@ -62,6 +61,9 @@ export default function IndexProduct() {
       return (
         <div className="col-4" key={index}>
           <div className="card">
+            <a href="#">
+              <i class="far fa-heart"></i>
+            </a>
             <img src={item.image} alt={item.name} />
             <div className="card-body">
               <h2>{item.name}</h2>
@@ -120,8 +122,10 @@ export default function IndexProduct() {
         </div>
       </section>
       <section className="product-feature">
+        <div className="text-feature">
+          <h1>Product Feature</h1>
+        </div>
         <div className="container">
-          <h1 className="text-center">-Product Feature-</h1>
           <div id="feature" className="row">
             {renderProduct()}
           </div>

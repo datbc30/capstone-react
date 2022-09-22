@@ -67,6 +67,7 @@
                         // background-color: #CCCCCC;
                         // margin-right: 21px;
                         // padding: 10px;
+                        display: flex;
 
                         button {
                             width: 50px;
@@ -108,22 +109,26 @@
                     margin-left: 127px;
                     margin-right: 250px;
 
-                    button {
+                    .btn-1 {
                         width: 175px;
                         height: 64px;
                         left: 527px;
                         top: 427px;
                         background: linear-gradient(270deg, rgba(62, 32, 248, 0.9) 5.14%, #D017EE 89.71%);
                         border: none;
-
+                        text-decoration: none;
                         font-family: 'Inter';
                         font-style: normal;
                         font-weight: 500;
                         font-size: 24px;
                         line-height: 29px;
-
+                        border: none;
                         color: #FFF8F8;
 
+                        .btn-2 {
+                            text-decoration: none;
+                            color: #FFF8F8;
+                        }
                     }
                 }
             }
@@ -151,6 +156,7 @@
 
         .row {
             .col-4 {
+                // background-color: #F8F8F8;
                 .card {
                     border: none;
                     background-color: #F8F8F8;
@@ -161,7 +167,8 @@
                 }
 
                 .card-body {
-                    // background-color: #F8F8F8;
+
+                    background-color: #F8F8F8;
                     h2 {
                         font-family: 'Inter';
                         font-style: normal;
@@ -177,7 +184,8 @@
                         font-weight: 300;
                         font-size: 20px;
                         line-height: 24px;
-                        margin-left: 20px;
+                        // margin-left: 20px;
+                        padding: 0 0 10px 20px;
                         color: #CBC9C9;
                     }
                 }
