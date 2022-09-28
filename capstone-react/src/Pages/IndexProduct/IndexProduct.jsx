@@ -62,7 +62,7 @@ export default function IndexProduct() {
         <div className="col-4" key={index}>
           <div className="card">
             <a href="#">
-              <i class="far fa-heart"></i>
+              <i className="far fa-heart"></i>
             </a>
             <img src={item.image} alt={item.name} />
             <div className="card-body">

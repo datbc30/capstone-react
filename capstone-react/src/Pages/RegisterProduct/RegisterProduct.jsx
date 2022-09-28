@@ -10,12 +10,12 @@ export default function RegisterProduct(props) {
   const navigate = useNavigate()
   const frm = useFormik({
     initialValues: {
-      email: "vuthanhdat999@gmail.com",
-      password: "datga",
-      passwordConfirm: "datga",
-      gender:"true",
-      name: "dat",
-      phone: "0922973414",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+      gender:"",
+      name: "",
+      phone: "",
     },
     validationSchema: Yup.object().shape({
       email: Yup.string()
@@ -29,8 +29,8 @@ export default function RegisterProduct(props) {
     onSubmit: async (values) => {
       console.log(values);
       const message = await dispatch(getSignUpApi(values))
-      navigate('/home')
-      alert (message)
+      navigate('/login')
+      alert ('đăng kí thành công')
 
     }
   });
@@ -45,7 +45,6 @@ export default function RegisterProduct(props) {
           <hr />
           <form
             className="form"
-            action
             id="formRegister"
             onSubmit={frm.handleSubmit}
           >

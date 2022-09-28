@@ -354,3 +354,10 @@
         }
     }
 }
+
+@media all and (max-width:576px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+      }
+}

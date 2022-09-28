@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { addToCartAction, getProductListApi } from "../../redux/reducer/productReducer";
+import { getProductAPI,addToCartAction } from "../../redux/reducer/productReducer";
 
-export default function DetaiProduct() {
-  const { productList,addToCart } = useSelector((state) => state.productReducer);
-  console.log(productList);
+
+export default function DetaiProduct(props) {
+  const { productSelected } = useSelector((state) => state.productReducer);
+  console.log(productSelected);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [number,setNumber] = useState(1)
-
   const params = useParams();
+  const [quantityBuy,setQuantityBuy] = useState(1)
 
-  console.log(addToCart);
 
   useEffect(() => {
     let { id } = params;
 
-    const action = getProductListApi(id);
+    const action = getProductAPI(id);
     dispatch(action);
+    
   }, [params.id]);
 
   const handleNumber = () => {
-    setNumber(number + 1)
+    setQuantityBuy(quantityBuy + 1)
   }
   const handleDownNumber = () => {
-    setNumber(number - 1)
+    setQuantityBuy(quantityBuy - 1)
   }
-
+ 
   
 
   return (
@@ -37,37 +37,36 @@ export default function DetaiProduct() {
           <div className="container">
             <div id="detail" className="Detail-crs">
               <div className="img-product">
-                <img src={productList.image} alt="..." />
+                <img src={productSelected.image} alt="..." />
               </div>
               <div className="Product__Detail__right">
                 <div className="Product__Item">
-                  <h1>{productList.name}</h1>
+                  <h1>{productSelected.name}</h1>
                 </div>
                 <div className="Product__Item">
-                  <p>{productList.description}</p>
+                  <p>{productSelected.description}</p>
                 </div>
                 <div className="Product__Item">
-                  <h2>{productList.alias}</h2>
+                  <h2>{productSelected.alias}</h2>
                 </div>
                 <div className="Product__Item1">
-                  {productList.size?.map((sizes,index) => {
+                  {productSelected.size?.map((sizes,index) => {
                     return <div className="item-number" key={index}>
                       <button>{sizes}</button>
                     </div>
                   })}
                 </div>
                 <div className="Product__Item">
-                  <p className="Item-monney">{productList.price}</p>
+                  <p className="Item-monney">{productSelected.price}</p>
                 </div>
                 <div className="Product__Item__Button">
                   <button onClick={handleNumber}>+</button>
-                  <p>{number}</p>
+                  <p>{quantityBuy}</p>
                   <button onClick={handleDownNumber}>-</button>
                 </div>
                 <div className="Product__Item__Button2">
                   <button className="btn-1" onClick={() => {
-                    const actionCart = addToCartAction(addToCart + number)
-                    dispatch(actionCart)
+                    dispatch(addToCartAction({...productSelected, quantityBuy}))
                   }}>
                     Add to Cart
                   </button>
@@ -82,7 +81,7 @@ export default function DetaiProduct() {
               <h1>-Realate Product -</h1>
             </div>
             <div id="relate" className="row">
-              {productList.relatedProducts?.map((prod, index) => {
+              {productSelected.relatedProducts?.map((prod, index) => {
                 return (
                   <div className="col-4 mt-5" key={index}>
                     <div className="card">

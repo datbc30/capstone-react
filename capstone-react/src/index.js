@@ -11,6 +11,8 @@ import DetailProduct from './Pages/DetailProduct/DetaiProduct'
 import './assets/scss/styles.scss'
 import RegisterProduct from './Pages/RegisterProduct/RegisterProduct';
 import SearchProduct from './Pages/SearchProduct/SearchProduct';
+import CartProduct from './Pages/CartProduct/CartProduct';
+import LoginProduct from './Pages/LoginProduct/LoginProduct';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,8 +26,12 @@ root.render(
           <Route path='detail'>
             <Route path=':id' element={<DetailProduct />}></Route>
           </Route>
+          <Route path='cart'>
+            <Route path=':id' element={<CartProduct />}></Route>
+          </Route>
           <Route path='register' element={<RegisterProduct />}></Route>
           <Route path='search' element={<SearchProduct />}></Route>
+          <Route path='login' element={<LoginProduct />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -3,8 +3,9 @@ import axios from "axios";
 
 const initialState = {
   arrProduct: [],
-  productList: [],
-  addToCart: 1
+  productSelected: {},
+  arrCart:[],
+  quantityBuy:1,
 };
 
 const productReducer = createSlice({
@@ -17,19 +18,30 @@ const productReducer = createSlice({
       //cập nhật lại state
       state.arrProduct = arrProduct;
     },
-    getProductListAction: (state, action) => {
-      const productList = action.payload;
-      state.productList = productList;
+    getProductSeleted: (state, action) => {
+      state.productSelected = action.payload
+      console.log({log:state.productSelected});
     },
-    addToCartAction : (state,action) => {
-      const addToCart = action.payload
-      state.addToCart = addToCart
-    }
+    addToCartAction: (state, action) => {
+      console.log({state,action});
+      const index = state.arrCart.findIndex((sp) => sp.id === action.payload.id)
+      if(index !== -1) {
+        state.arrCart[index].quantityBuy += state.quantityBuy
+      }
+      else {
+        const quantityBuy = state.quantityBuy
+        state.arrCart.push({...action.payload, quantityBuy})
+        console.log({arrCart:state.arrCart});
+      }
+    },
   },
 });
 
-export const { getProductAction, getProductListAction,addToCartAction } =
-  productReducer.actions;
+export const {
+  getProductAction,
+  getProductSeleted,
+  addToCartAction,
+} = productReducer.actions;
 
 export default productReducer.reducer;
 
@@ -52,17 +64,19 @@ export const getProductApi = () => {
   };
 };
 
-export const getProductListApi = (id) => {
+export const getProductAPI = (id) => {
   return async (dispatch, getState) => {
     try {
       const result = await axios({
         url: `https://shop.cyberlearn.vn/api/Product/getbyid?id=${id}`,
         method: "GET",
       });
-      const action = getProductListAction(result.data.content);
+      const action = getProductSeleted(result.data.content);
       dispatch(action);
     } catch (err) {
       console.log({ err });
     }
   };
 };
+
+

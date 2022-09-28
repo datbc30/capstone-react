@@ -93,17 +93,17 @@ export default function SearchProduct(props) {
                 <h4>Price</h4>
               </div>
               <div className="search-price-sort">
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>decrease</option>
+                <select className="form-select" aria-label="Default select example">
+                  {/* <option selected>decrease</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="3">Three</option> */}
                 </select>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>ascending</option>
+                <select className="form-select" aria-label="Default select example">
+                  {/* <option selected>ascending</option>
                   <option value="1">One</option>
                   <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="3">Three</option> */}
                 </select>
               </div>
             </div>

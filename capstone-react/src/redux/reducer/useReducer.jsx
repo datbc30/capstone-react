@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  useReducer: {
+  useRegister: {
     "email": "string",
     "password": "string",
     "name": "string",
     "gender": true,
     "phone": "string"
-  }
+  },
 };
 
 const useReducer = createSlice({
@@ -16,7 +16,7 @@ const useReducer = createSlice({
   initialState,
   reducers: {
     getProfileAction: (state, action) => {
-      state.userLogin = action.payload;
+      state.useRegister = action.payload;
     },
   },
 });
@@ -25,7 +25,7 @@ export const { getProfileAction } = useReducer.actions;
 
 export default useReducer.reducer;
 
-export const getSignUpApi = (useReducer) => {
+export const getSignUpApi = (useRegister) => {
   return async (dispatch) => {
         try {
             const result = await axios({
@@ -34,7 +34,7 @@ export const getSignUpApi = (useReducer) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                data: JSON.stringify(useReducer) 
+                data: JSON.stringify(useRegister) 
             })
             return result.data.message
             

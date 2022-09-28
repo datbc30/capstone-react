@@ -1,0 +1,54 @@
+.container {
+    .login-title {
+        font-size: 50px;
+        font-weight: 500;
+    }
+
+    .form {
+
+        .formlable {
+            padding: 0 400px 0 400px;
+
+            .button-login {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+
+                .register-now {
+                    text-decoration: none;
+                    margin-right: 20px;
+                    margin-top: 10px;
+                }
+
+                .btn-submit {
+                    // padding: 12px;
+                    gap: 10px;
+                    padding: 12px 30px 12px 30px;
+                    background-color: #6200EE;
+                    border: none;
+                    border-radius: 10px;
+                    -moz-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+                    -webkit-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+                    box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+                }
+            }
+            .loginInFacebook {
+                padding: 10px 0 10px 0;
+                .lg-face{
+                    width: 100%;
+                    height: 60px;
+                    background-color: blue;
+                    color: white;
+                    border: none;
+                    border-radius: 20px;
+                    display: flex;
+                    flex-direction: row;
+                    align-content: space-between;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
