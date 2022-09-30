@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 export default function HeaderHome(props) {
-  const {productSelected,arrCard } = useSelector((state) => state.productReducer);
+  const {productSelected,quantityBuy } = useSelector((state) => state.productReducer);
   return (
     <header className="header">
       <div className="container">
@@ -17,7 +17,7 @@ export default function HeaderHome(props) {
           </div>
           <div className="cart">
             <img src="./img/image8.png" alt="cart" />
-            <NavLink to={`/cart/${productSelected.id}`}>({arrCard})</NavLink>
+            <NavLink to={`/cart/${productSelected.id}`}>({quantityBuy})</NavLink>
           </div>
           <div className="user-login">
             <NavLink to="/login">Login</NavLink>

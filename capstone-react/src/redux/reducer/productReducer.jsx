@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useState } from "react";
 
 const initialState = {
   arrProduct: [],
   productSelected: {},
-  arrCart:[],
-  quantityBuy:1,
+  productList: [],
+  arrCart: [],
+  quantityBuy: 1,
+  oderDetail: []
 };
 
 const productReducer = createSlice({
@@ -19,21 +22,29 @@ const productReducer = createSlice({
       state.arrProduct = arrProduct;
     },
     getProductSeleted: (state, action) => {
-      state.productSelected = action.payload
-      console.log({log:state.productSelected});
+      state.productSelected = action.payload;
+      console.log({ log: state.productSelected });
     },
     addToCartAction: (state, action) => {
-      console.log({state,action});
-      const index = state.arrCart.findIndex((sp) => sp.id === action.payload.id)
-      if(index !== -1) {
-        state.arrCart[index].quantityBuy += state.quantityBuy
-      }
-      else {
-        const quantityBuy = state.quantityBuy
-        state.arrCart.push({...action.payload, quantityBuy})
-        console.log({arrCart:state.arrCart});
+      console.log({ state, action });
+      const index = state.arrCart.findIndex(
+        (sp) => sp.id === action.payload.id
+      );
+      if (index !== -1) {
+        state.arrCart[index].quantityBuy += state.quantityBuy;
+      } else {
+        const quantityBuy = state.quantityBuy;
+        state.arrCart.push({ ...action.payload, quantityBuy });
+        console.log({ arrCart: state.arrCart });
       }
     },
+    addProductList: (state, action) => {
+      console.log({ state, action });
+    },
+    oderDetailProduct: (state, action) => {
+      state.oderDetail = action.payload;
+      console.log({log :state.oderDetail});
+    }
   },
 });
 
@@ -41,6 +52,8 @@ export const {
   getProductAction,
   getProductSeleted,
   addToCartAction,
+  addProductList,
+  oderDetailProduct
 } = productReducer.actions;
 
 export default productReducer.reducer;
@@ -79,4 +92,18 @@ export const getProductAPI = (id) => {
   };
 };
 
-
+export const getOderDetail = (oderDetail) => {
+  return async (dispatch,getState) => {
+    try{
+      const result = await axios({
+        url:"https://shop.cyberlearn.vn/api/Users/order",
+        method:"POST",
+      });
+      const action = oderDetailProduct(result.content);
+      dispatch(action)
+    }
+    catch(err) {
+      console.log({err});
+    }
+  }
+}

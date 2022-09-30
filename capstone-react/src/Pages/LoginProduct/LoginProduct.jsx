@@ -2,8 +2,9 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { getSignUpApi } from "../../redux/reducer/useReducer";
+import { NavLink, useNavigate } from "react-router-dom";
+import { getLoginApi, getSignUpApi } from "../../redux/reducer/useReducer";
+import { ACCESS_TOKEN, getStore, USER_LOGIN } from "../../util/tools";
 
 export default function LoginProduct() {
   const dispatch = useDispatch();
@@ -21,13 +22,14 @@ export default function LoginProduct() {
         .required("password không được để trống !")
         .min(6, "phải từ 6 kí tự trở lên (bao gồm số và chữ cái)"),
     }),
-    // onSubmit: async (values) => {
-    //   console.log(values);
-    //   const message = await dispatch(getSignUpApi(values));
-    //   navigate("/home");
-    //   alert(message);
-    // },
+    onSubmit: (values) => {
+      console.log(values);
+      dispatch(getLoginApi(values))
+    },
   });
+
+
+
   return (
     <section>
       <div className="container">
@@ -46,8 +48,10 @@ export default function LoginProduct() {
                 type="email"
                 className="form-control"
                 id="floatingInput"
+                name="email"
                 required
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                value={frm.values.email}
                 onChange={frm.handleChange}
                 onBlur={frm.handleBlur}
               />
@@ -63,8 +67,10 @@ export default function LoginProduct() {
                 type="password"
                 className="form-control"
                 id="floatingPassword"
+                name="password"
                 required
                 minLength={6}
+                value={frm.values.password}
                 onChange={frm.handleChange}
                 onBlur={frm.handleBlur}
               />
@@ -84,7 +90,7 @@ export default function LoginProduct() {
             <div className="loginInFacebook">
               <button className="lg-face">
                 <i className="fab fa-facebook"></i>
-                continue in facebook
+                <a href="">continue in facebook</a>
               </button>
             </div>
           </div>

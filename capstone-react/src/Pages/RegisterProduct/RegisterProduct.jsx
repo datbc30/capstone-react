@@ -148,7 +148,7 @@ export default function RegisterProduct(props) {
                     id="phone"
                     maxLength={10}
                     required
-                    pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b"
+                    // pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b"
                     onChange={frm.handleChange}
                     onBlur={frm.handleBlur}
                   />

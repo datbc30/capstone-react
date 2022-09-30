@@ -65,6 +65,9 @@ http.interceptors.request.use(
             ['Authorization']: `Bearer ${token}`,
             ['TokenCybersoft']: TOKEN_CYBERSOFT
         }
+        config.data = {
+            ...config.data,
+        }
 
         // if(token) {
         //     config.headers['Authorization'] = 'Bearer' + token

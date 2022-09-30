@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { getProductAPI,addToCartAction } from "../../redux/reducer/productReducer";
-
+import {
+  getProductAPI,
+  addToCartAction,
+  addProductList,
+} from "../../redux/reducer/productReducer";
 
 export default function DetaiProduct(props) {
   const { productSelected } = useSelector((state) => state.productReducer);
@@ -10,25 +13,23 @@ export default function DetaiProduct(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
-  const [quantityBuy,setQuantityBuy] = useState(1)
-
+  const [quantityBuy, setQuantityBuy] = useState(1);
+ 
 
   useEffect(() => {
     let { id } = params;
 
     const action = getProductAPI(id);
     dispatch(action);
-    
   }, [params.id]);
 
-  const handleNumber = () => {
-    setQuantityBuy(quantityBuy + 1)
-  }
-  const handleDownNumber = () => {
-    setQuantityBuy(quantityBuy - 1)
-  }
- 
   
+  const handleNumber = () => {
+    setQuantityBuy(quantityBuy + 1);
+  };
+  const handleDownNumber = () => {
+    setQuantityBuy(quantityBuy - 1);
+  };
 
   return (
     <div>
@@ -50,10 +51,12 @@ export default function DetaiProduct(props) {
                   <h2>{productSelected.alias}</h2>
                 </div>
                 <div className="Product__Item1">
-                  {productSelected.size?.map((sizes,index) => {
-                    return <div className="item-number" key={index}>
-                      <button>{sizes}</button>
-                    </div>
+                  {productSelected.size?.map((sizes, index) => {
+                    return (
+                      <div className="item-number" key={index}>
+                        <button>{sizes}</button>
+                      </div>
+                    );
                   })}
                 </div>
                 <div className="Product__Item">
@@ -65,9 +68,14 @@ export default function DetaiProduct(props) {
                   <button onClick={handleDownNumber}>-</button>
                 </div>
                 <div className="Product__Item__Button2">
-                  <button className="btn-1" onClick={() => {
-                    dispatch(addToCartAction({...productSelected, quantityBuy}))
-                  }}>
+                  <button
+                    className="btn-1"
+                    onClick={() => {
+                      dispatch(
+                        addToCartAction({ ...productSelected, quantityBuy })
+                      );
+                    }}
+                  >
                     Add to Cart
                   </button>
                 </div>
