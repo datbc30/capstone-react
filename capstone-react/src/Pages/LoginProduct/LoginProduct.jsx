@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getLoginApi, getSignUpApi } from "../../redux/reducer/useReducer";
 import { ACCESS_TOKEN, getStore, USER_LOGIN } from "../../util/tools";
@@ -25,6 +25,8 @@ export default function LoginProduct() {
     onSubmit: (values) => {
       console.log(values);
       dispatch(getLoginApi(values))
+      alert("đăng nhâp thành công")
+      navigate("/home")
     },
   });
 

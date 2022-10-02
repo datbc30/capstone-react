@@ -8,7 +8,7 @@ export default function NavbarHome() {
         <NavLink to="/home" className="active">
           Home
         </NavLink>
-        <a href="#">Men</a>
+        <NavLink to="/profile">profile</NavLink>
         <a href="#">Women</a>
         <a href="#">Kid</a>
         <a href="#">Sport</a>
