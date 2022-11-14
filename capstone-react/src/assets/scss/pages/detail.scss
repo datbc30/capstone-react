@@ -155,7 +155,7 @@
         }
 
         .row {
-            .col-4 {
+            .col-lg-4,.col-md-6 {
                 // background-color: #F8F8F8;
                 .card {
                     border: none;
@@ -355,9 +355,32 @@
     }
 }
 
-@media all and (max-width:576px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-      }
+@media (max-width:576px) {
+    .Product__Detail{
+        .container{
+            .Detail-crs{
+                display: flex;
+                flex-direction: column;
+                .Product__Detail__right{
+                    .Product__Item{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item1{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item__Button{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item__Button2{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                }
+            }
+            
+        }
+    }
 }

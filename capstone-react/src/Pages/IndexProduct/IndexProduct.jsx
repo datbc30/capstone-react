@@ -59,7 +59,7 @@ export default function IndexProduct() {
   const renderProduct = () => {
     return arrProduct.map((item, index) => {
       return (
-        <div className="col-4" key={index}>
+        <div className="col-lg-4 col-md-6" key={index}>
           <div className="card">
             <a href="#">
               <i className="far fa-heart"></i>

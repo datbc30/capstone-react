@@ -91,7 +91,7 @@ export default function DetaiProduct(props) {
             <div id="relate" className="row">
               {productSelected.relatedProducts?.map((prod, index) => {
                 return (
-                  <div className="col-4 mt-5" key={index}>
+                  <div className="col-lg-4 col-md-6 mt-5" key={index}>
                     <div className="card">
                       <img src={prod.image} alt="..." />
                     </div>
