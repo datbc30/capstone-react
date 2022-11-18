@@ -1,103 +1,80 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getOderDetail, getProductAPI, oderDetailProduct } from "../../redux/reducer/productReducer";
-import { getStore, USER_LOGIN } from "../../util/tools";
+import TableCart from "../../components/TableCart/TableCart";
+import { clearCartsAction, getOderDetail, getProductAPI, oderDetailProduct, pushProductOrders } from "../../redux/reducer/productReducer";
+import { getStore, getStoreJson, http, USER_LOGIN } from "../../util/tools";
 
 export default function CartProduct(props) {
-  const { arrCart, oderDetail } = useSelector((state) => state.productReducer);
-  console.log(arrCart);
+  const { arrCart } = useSelector((state) => state.productReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const { useReducer } = useSelector((state) => state.useReducer);
 
-  const [stateProduct, setStateProduct] = useState({
-    productList: [],
-  });
 
-  const updateProductList = (productSelected) => {
-    let testObj = [...stateProduct.productList];
-    const index = testObj.findIndex((sp) => sp.id === productSelected.id);
-    if (index === -1) {
-      testObj.push(productSelected);
-      setStateProduct({
-        ...stateProduct,
-        productList: testObj,
-      });
+  const orderProducts = async () => {
+    try {
+      let arrProductsOrderFilter = arrCart.filter((item) => item !== null)
+      if (arrProductsOrderFilter.length > 0) {
+        let orderProducts = arrProductsOrderFilter?.reduce((order, product) => {
+          order.push({
+            "productId": product?.id,
+            "quantity": product?.quantity
+          })
+          return order
+
+        }, [])
+        let dataOrder = {
+          "orderDetail": orderProducts,
+          "email": useReducer.email
+        }
+        const result = await http.post('/Users/order', dataOrder);
+        alert("Đặt hàng thành công!");
+        navigator('/profile')
+        return dataOrder;
+      }
+      else {
+        navigator('/login')
+      }
     }
-    console.log(stateProduct);
-    console.log(stateProduct.productList);
-  }
+    catch (err) {
 
-  useEffect(() => {
-    if(getStore(USER_LOGIN) === 'undefined'){
-      alert('yêu cầu bạn hãy đăng nhập ')
-      return navigate('/login')
     }
-    updateProductList(arrCart);
 
-    const action = getOderDetail()
-    dispatch(action)
-    
-  },[])
-  const renderCartProduct = () => {
-   
-    return arrCart.map((cart, index) => {
-      return (
-        <tr key={index}>
-          <td></td>
-          <td>{cart.id}</td>
-          <td>
-            <img src={cart.image} alt="..." width={50} />
-          </td>
-          <td>{cart.name}</td>
-          <td>{cart.price}</td>
-          <td className="d-flex td-quantity">
-            <button className="button-quantity1">+</button>
-            <p className="text-quantity">1</p>
-            <button className="button-quantity2">-</button>
-          </td>
-          <td>{cart.price}</td>
-          <td>
-            <button className="btn-delete">delete</button>
-            <button className="btn-edit">edit</button>
-          </td>
-        </tr>
-      );
-    });
+  };
+  const arrCarts = [];
+
+  const clearCarts = () => {
+    dispatch(clearCartsAction(arrCarts));
   };
 
+  useEffect(() => {
+    let arrProductOrder = getStoreJson('arrProductOrder');
+    if (arrProductOrder !== null) {
+      const action = pushProductOrders(arrProductOrder);
+      dispatch(action);
+    }
+  }, [])
+  
   return (
-    <div className="cartProduct">
-      <div className="container">
-        <div className="title-cart">
-          <h3>Carts</h3>
-          <hr />
-        </div>
-        <div className="table-cart">
-          <table className="table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>id</th>
-                <th>img</th>
-                <th>name</th>
-                <th>price</th>
-                <th>quantity</th>
-                <th>totall</th>
-                <th>action</th>
-              </tr>
-            </thead>
-            <tbody className="t-body">
-              {renderCartProduct()}
-            </tbody>
-          </table>
-          <div className="btn-submit">
-            <button className="btn btn-success" onClick={()=>{
-              dispatch(oderDetailProduct({...oderDetail}))
-            }}>Submit Oder</button>
-          </div>
-        </div>
+    <section className="cart_detail">
+    <div className="container">
+      <h1 className="cart_detail-title">Carts</h1>
+      <TableCart />
+      <div className="text-end">
+        <button
+          className="btn cart_detail-btn"
+          onClick={() => {
+            orderProducts();
+            setTimeout(() => {
+              clearCarts();
+            }, 2000);
+          }}
+        >
+          Submit order
+        </button>
       </div>
     </div>
+  </section>
   );
 }

@@ -25,18 +25,43 @@ const productReducer = createSlice({
       state.productSelected = action.payload;
       console.log({ log: state.productSelected });
     },
-    addToCartAction: (state, action) => {
-      console.log({ state, action });
-      const index = state.arrCart.findIndex(
-        (sp) => sp.id === action.payload.id
+    addToCart: (state, action) => {
+      let index = state.arrCart.findIndex(
+        (pro) => pro.id === action.payload.id
       );
       if (index !== -1) {
         state.arrCart[index].quantityBuy += state.quantityBuy;
       } else {
-        const quantityBuy = state.quantityBuy;
+        let quantityBuy = state.quantityBuy;
         state.arrCart.push({ ...action.payload, quantityBuy });
-        console.log({ arrCart: state.arrCart });
       }
+    },
+    changeQuantity: (state, action) => {
+      if (action.payload) {
+        state.quantityBuy += 1;
+      } else {
+        if (state.quantityBuy > 1) {
+          state.quantityBuy -= 1;
+        }
+      }
+    },
+    changeQuantityCart: (state, action) => {
+      let { type, id } = action.payload;
+      let index = state.arrCart.findIndex((pro) => pro.id === id);
+      if (type) {
+        state.arrCart[index].quantityBuy += 1;
+      } else {
+        if (state.arrCart[index].quantityBuy > 1) {
+          state.arrCart[index].quantityBuy -= 1;
+        } else {
+          state.arrCart.splice(index, 1);
+        }
+      }
+    },
+    removeFromCart: (state, action) => {
+      state.arrCart = state.arrCart.filter(
+        (pro) => pro.id !== action.payload
+      );
     },
     addProductList: (state, action) => {
       console.log({ state, action });
@@ -44,7 +69,21 @@ const productReducer = createSlice({
     oderDetailProduct: (state, action) => {
       state.oderDetail = action.payload;
       console.log({log :state.oderDetail});
-    }
+    },
+    clearCartsAction: (state, action) => {
+      state.arrCart = action.payload;
+    },
+    pushProductOrders: (state, { payload }) => {
+      let prod = { ...payload };
+      let newArrProductsOrder = [...state.arrCart];
+      let sp = newArrProductsOrder.find((p) => p.id === prod.id && Number(p.size) === Number(prod.size));
+      if (sp) {
+        sp.quantity += prod.quantity;
+      } else {
+        newArrProductsOrder.push(prod);
+      }
+      state.arrCart = newArrProductsOrder;
+    },
   },
 });
 
@@ -53,7 +92,13 @@ export const {
   getProductSeleted,
   addToCartAction,
   addProductList,
-  oderDetailProduct
+  oderDetailProduct,
+  addToCart,
+  changeQuantity,
+  changeQuantityCart,
+  clearCartsAction,
+  pushProductOrders,
+  removeFromCart
 } = productReducer.actions;
 
 export default productReducer.reducer;

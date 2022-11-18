@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function RegisterProduct(props) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const frm = useFormik({
+  const form = useFormik({
     initialValues: {
       email: "",
       password: "",
@@ -27,8 +27,7 @@ export default function RegisterProduct(props) {
       phone: Yup.string().required("phone không được để trống !"),
     }),
     onSubmit: async (values) => {
-      console.log(values);
-      const message = await dispatch(getSignUpApi(values))
+      dispatch(getSignUpApi(values));
       navigate('/login')
       alert ('đăng kí thành công')
 
@@ -37,166 +36,167 @@ export default function RegisterProduct(props) {
 
   return (
     <div>
-      <section className="register" id="register">
-        <div className="container">
-          <div className="title">
-            <p>Register</p>
-          </div>
-          <hr />
-          <form
-            className="form"
-            id="formRegister"
-            onSubmit={frm.handleSubmit}
-          >
-            <div className="reg-content">
-              <div className="reg-left">
-                <div className="material-form-field">
-                  {/* <h3 className="text-start">Email</h3> */}
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                    onChange={frm.handleChange}
-                    onBlur={frm.handleBlur}
-                  />
-                  {frm.errors.email ? (
-                    <span className="text-danger">{frm.errors.email}</span>
-                  ) : (
-                    ""
-                  )}
-                  <label
-                    className="material-form-field-label"
-                    htmlFor="field-text"
-                  >
-                    Email
-                  </label>
-                  <span className="text-danger" id="tbEmail" />
-                </div>
-                <div className="material-form-field">
-                  <input
-                    id="password"
-                    type="password"
-                    required
-                    maxLength={10}
-                    onChange={frm.handleChange}
-                    onBlur={frm.handleBlur}
-                  />
-                  {frm.errors.password ? (
-                    <span className="text-danger">{frm.errors.password}</span>
-                  ) : (
-                    ""
-                  )}
-                  <label
-                    className="material-form-field-label"
-                    htmlFor="field-text"
-                  >
-                    Password
-                  </label>
-                  <span className="text-danger" id="tbPassword" />
-                </div>
-                <div className="material-form-field">
-                  <input
-                    id="passwordConfirm"
-                    type="password"
-                    required
-                    maxLength={10}
-                    onChange={frm.handleChange}
-                    onBlur={frm.handleBlur}
-                  />
-                  {frm.errors.passwordConfirm ? (
-                    <span className="text-danger">
-                      {frm.errors.passwordConfirm}
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                  <label
-                    className="material-form-field-label"
-                    htmlFor="field-text"
-                  >
-                    Password Confirm
-                  </label>
-                  <span className="text-danger" id="tbConfirm" />
-                </div>
-              </div>
-              <div className="reg-right">
-                <div className="material-form-field">
-                  <input
-                    id="name"
-                    type="text"
-                    required
-                    pattern="[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]+$"
-                    onChange={frm.handleChange}
-                    onBlur={frm.handleBlur}
-                  />
-                  {frm.errors.name ? (
-                    <span className="text-danger">{frm.errors.name}</span>
-                  ) : (
-                    ""
-                  )}
-                  <label
-                    className="material-form-field-label"
-                    htmlFor="field-text"
-                  >
-                    Name
-                  </label>
-                  <span className="text-danger" id="tbName" />
-                </div>
-                <div className="material-form-field">
-                  <input
-                    id="phone"
-                    maxLength={10}
-                    required
-                    // pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b"
-                    onChange={frm.handleChange}
-                    onBlur={frm.handleBlur}
-                  />
-                  {frm.errors.phone ? (
-                    <span className="text-danger">{frm.errors.phone}</span>
-                  ) : (
-                    ""
-                  )}
-                  <label
-                    className="material-form-field-label"
-                    htmlFor="field-text"
-                  >
-                    Phone
-                  </label>
-                  <span className="text-danger" id="tbPhone" />
-                </div>
-                <div id="gender" className="gender">
-                  <label>Gender</label>
-                  <div className="radio gender_inp">
-                    <input
-                      id="male"
-                      type="radio"
-                      name="selector"
-                      defaultValue="male"
-                      defaultChecked
-                    />
-                    <label className="radio-label" htmlFor="male">
-                      Male
-                    </label>
-                    <input
-                      id="female"
-                      type="radio"
-                      name="selector"
-                      defaultValue="female"
-                    />
-                    <label className="radio-label" htmlFor="female">
-                      Female
-                    </label>
+       <section className="register">
+          <div className="container">
+            <div className="row content-register">
+              <div className="col-10 mx-auto detail-register">
+                <h3 className="text-left display-6 text-dark fs-1">Register</h3>
+                <hr />
+                <form id="formRegister" onSubmit={form.handleSubmit}>
+                  <div className="row register-item">
+                    <div className="col-6 form-group">
+                      <label>Email</label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        name="email"
+                        placeholder="email"
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+           
+                      />
+                      {form.errors.email ? (
+                        <span className="text-danger">{form.errors.email}</span>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    <div className="col-6 form-group">
+                      <label>Name</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="name"
+                        name="name"
+                        placeholder="name"
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+
+                      />
+                      {form.errors.name ? (
+                        <span className="text-danger">{form.errors.name}</span>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
-                </div>
-                <button id="submit" className="btn-submit" type="submit">
-                  Submit
-                </button>
+                  <div className="row register-item">
+                    <div className="col-6 form-group">
+                      <label>Password</label>
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="password"
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      {form.errors.password ? (
+                        <span className="text-danger">
+                          {form.errors.password}
+                        </span>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    <div className="col-6 form-group">
+                      <label>Phone</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="phone"
+                        name="phone"
+                        placeholder="phone"
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+
+                      />
+                      {form.errors.phone ? (
+                        <span className="text-danger">{form.errors.phone}</span>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  </div>
+                  <div className="row register-item">
+                    <div className="col-6 form-group">
+                      <label>Password confirm</label>
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="passwordConfirm"
+                        name="passwordConfirm"
+                        placeholder="password confirm"
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      {form.errors.passwordConfirm ? (
+                        <span className="text-danger">
+                          {form.errors.passwordConfirm}
+                        </span>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    <div className="col-6 form-gender">
+                      <div id="gender-content">
+                        <div className="gender-option">
+                          <p
+                            style={{
+                              fontSize: 18,
+                              fontWeight: 500,
+                              paddingRight: "20px",
+                              display: "inline-block",
+                              color: "rgba(0, 0, 0, 0.6)",
+                            }}
+                          >
+                            Gender
+                          </p>
+                        </div>
+                        <div className="gender-option">
+                          <div className="gender-click">
+                            <input
+                              defaultChecked={true}
+                              type="radio"
+                              name="gender"
+                              value={true}
+                              onChange={() =>
+                                form.setFieldValue("gender", true)
+                              }
+                            />
+                            <br />
+                            <label className="label-title">Male</label>
+                          </div>
+                          <div className="gender-click">
+                            <input
+                              type="radio"
+                              name="gender"
+                              value={false}
+                              onChange={() =>
+                                form.setFieldValue("gender", false)
+                              }
+                            />
+                            <br />
+                            <label className="label-title">Female</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="button">
+                    <div id="btnSubmit">
+                      <button type="submit" className="btn-submit btn btn-primary">
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
-          </form>
-        </div>
-      </section>
+          </div>
+        </section>
     </div>
   );
 }

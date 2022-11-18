@@ -89,12 +89,7 @@ export default function LoginProduct() {
               </a>
               <button className="btn-submit" type="submit" id="submit">Login</button>
             </div>
-            <div className="loginInFacebook">
-              <button className="lg-face">
-                <i className="fab fa-facebook"></i>
-                <a href="">continue in facebook</a>
-              </button>
-            </div>
+           
           </div>
         </form>
       </div>

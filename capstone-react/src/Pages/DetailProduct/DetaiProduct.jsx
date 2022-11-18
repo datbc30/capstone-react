@@ -3,18 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import {
   getProductAPI,
-  addToCartAction,
-  addProductList,
+  addToCart,
+  changeQuantity,
 } from "../../redux/reducer/productReducer";
 
 export default function DetaiProduct(props) {
-  const { productSelected } = useSelector((state) => state.productReducer);
-  console.log(productSelected);
+  const { productSelected, quantityBuy } = useSelector(
+    (state) => state.productReducer
+  );
+  const { useReducer } = useSelector((state) => state.useReducer);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const params = useParams();
-  const [quantityBuy, setQuantityBuy] = useState(1);
- 
+  const navigate = useNavigate();
 
   useEffect(() => {
     let { id } = params;
@@ -23,13 +23,9 @@ export default function DetaiProduct(props) {
     dispatch(action);
   }, [params.id]);
 
-  
-  const handleNumber = () => {
-    setQuantityBuy(quantityBuy + 1);
-  };
-  const handleDownNumber = () => {
-    setQuantityBuy(quantityBuy - 1);
-  };
+  const message = () => {
+    alert('Add to cart successfully')
+  }
 
   return (
     <div>
@@ -63,16 +59,29 @@ export default function DetaiProduct(props) {
                   <p className="Item-monney">{productSelected.price}</p>
                 </div>
                 <div className="Product__Item__Button">
-                  <button onClick={handleNumber}>+</button>
+                  <button
+                    onClick={() => {
+                      dispatch(changeQuantity(true));
+                    }}
+                  >
+                    +
+                  </button>
                   <p>{quantityBuy}</p>
-                  <button onClick={handleDownNumber}>-</button>
+                  <button
+                    onClick={() => {
+                      dispatch(changeQuantity(false));
+                    }}
+                  >
+                    -
+                  </button>
                 </div>
                 <div className="Product__Item__Button2">
                   <button
                     className="btn-1"
                     onClick={() => {
+                      message()
                       dispatch(
-                        addToCartAction({ ...productSelected, quantityBuy })
+                        addToCart({ ...productSelected, quantityBuy })
                       );
                     }}
                   >
