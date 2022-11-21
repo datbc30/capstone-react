@@ -1,3 +1,6 @@
+import { Select } from "antd";
+import { Option } from "antd/lib/mentions";
+import _ from "lodash";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams, NavLink, useNavigate } from "react-router-dom";
@@ -25,6 +28,14 @@ export default function SearchProduct(props) {
     } catch (err) {}
   };
 
+  const getProductBySort = (value) => {
+    let arrProductSort = _.sortBy(arrProduct, [(item) => item.price]);
+    if (value === "descending") {
+      arrProductSort = arrProductSort.reverse();
+    }
+    setArrProduct(arrProductSort);
+  };
+
   useEffect(() => {
     getProductByKeyword();
   }, [keywordRef.current]);
@@ -43,7 +54,7 @@ export default function SearchProduct(props) {
   const renderProductByKeyword = () => {
     return arrProduct.map((item, index) => {
       return (
-        <div className="col-4" key={index}>
+        <div className="col-lg-4 col-md-6" key={index}>
           <div className="card">
             <img src={item.image} alt={item.name} />
             <div className="card-body">
@@ -89,22 +100,18 @@ export default function SearchProduct(props) {
               <h3>Search Result</h3>
             </div>
             <div className="search-price">
-              <div className="search-price-title">
-                <h4>Price</h4>
-              </div>
-              <div className="search-price-sort">
-                <select className="form-select" aria-label="Default select example">
-                  {/* <option selected>decrease</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option> */}
-                </select>
-                <select className="form-select" aria-label="Default select example">
-                  {/* <option selected>ascending</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option> */}
-                </select>
+              <div className="sort-input text-start">
+                <label>Price:</label>
+                <br />
+                <Select
+                  defaultValue=""
+                  onChange={(e) => {
+                    getProductBySort(e);
+                  }}
+                >
+                  <Option value="ascending">Ascending</Option>
+                  <Option value="descending">Descending</Option>
+                </Select>
               </div>
             </div>
             <div className="listProduct">

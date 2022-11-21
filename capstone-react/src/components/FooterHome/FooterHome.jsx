@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function FooterHome() {
+  const navigate = useNavigate()
   return (
     <footer className="footer">
       <div className="footer-top  footer-element text-center">
@@ -31,8 +33,12 @@ export default function FooterHome() {
             <div className="col-4">
               <div className="item">
                 <h2>register</h2>
-                <p>Register</p>
-                <a href="#">Login</a>
+                <p onClick={() => {
+                  navigate('/register')
+                }}>Register</p>
+                <a onClick={()=> {
+                  navigate('/login')
+                }}>Login</a>
               </div>
             </div>
           </div>

@@ -44,7 +44,7 @@ export default function RegisterProduct(props) {
                 <hr />
                 <form id="formRegister" onSubmit={form.handleSubmit}>
                   <div className="row register-item">
-                    <div className="col-6 form-group">
+                    <div className="col-lg-6 col-mb-8 col-sm-12 form-group">
                       <label>Email</label>
                       <input
                         type="email"
@@ -62,7 +62,7 @@ export default function RegisterProduct(props) {
                         ""
                       )}
                     </div>
-                    <div className="col-6 form-group">
+                    <div className="col-lg-6 col-mb-8 col-sm-12 form-group">
                       <label>Name</label>
                       <input
                         type="text"
@@ -82,7 +82,7 @@ export default function RegisterProduct(props) {
                     </div>
                   </div>
                   <div className="row register-item">
-                    <div className="col-6 form-group">
+                    <div className="col-lg-6 col-sm-12 form-group">
                       <label>Password</label>
                       <input
                         type="password"
@@ -101,7 +101,7 @@ export default function RegisterProduct(props) {
                         ""
                       )}
                     </div>
-                    <div className="col-6 form-group">
+                    <div className="col-lg-6 col-sm-12 form-group">
                       <label>Phone</label>
                       <input
                         type="text"
@@ -121,7 +121,7 @@ export default function RegisterProduct(props) {
                     </div>
                   </div>
                   <div className="row register-item">
-                    <div className="col-6 form-group">
+                    <div className="col-lg-6 col-sm-12 form-group">
                       <label>Password confirm</label>
                       <input
                         type="password"
@@ -140,7 +140,7 @@ export default function RegisterProduct(props) {
                         ""
                       )}
                     </div>
-                    <div className="col-6 form-gender">
+                    <div className="col-lg-6 col-sm-12 form-gender">
                       <div id="gender-content">
                         <div className="gender-option">
                           <p
@@ -185,7 +185,7 @@ export default function RegisterProduct(props) {
                       </div>
                     </div>
                   </div>
-                  <div className="button">
+                  <div className="button mt-4 mb-4">
                     <div id="btnSubmit">
                       <button type="submit" className="btn-submit btn btn-primary">
                         Submit

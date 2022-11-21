@@ -137,19 +137,15 @@ export const updateProfileApi = (userUpdate) => {
 export const getProfileApi = (accessToken = getStore(ACCESS_TOKEN)) => {
   return async (dispatch) => {
     try {
-      const result = await axios({
-        url: "https://shop.cyberlearn.vn/api/Users/getProfile",
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + accessToken,
-        },
-      });
+      let url = "https://shop.cyberlearn.vn/api/Users/getProfile";
+      let token =
+        "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiIxOG1heXRpbmhtb2lAZ21haWwuY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVklFV19QUk9GSUxFIiwibmJmIjoxNjY0NTU0MDczLCJleHAiOjE2NjQ1NTc2NzN9.GqnR8y0H68rTm7Wb94UmuEDwynnE-k8hwxWZqAvLFS4";
+      let headers = { Authorization: `Bearer ${token}` };
+      const result = await axios.post(url, {}, { headers });
 
       const action = getProfileAction(result.data.content);
       dispatch(action);
-
-      setStoreJson(USER_LOGIN, result.data.content);
-    } catch (err) {}
+    } catch (error) {}
   };
 };
 

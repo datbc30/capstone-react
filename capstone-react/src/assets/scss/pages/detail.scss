@@ -8,7 +8,7 @@
 
         .Detail-crs {
             display: flex;
-            margin-left: 65px;
+            // margin-left: 65px;
 
             .img-product {
                 width: 450px;
@@ -361,6 +361,95 @@
             .Detail-crs{
                 display: flex;
                 flex-direction: column;
+                .Product__Detail__right{
+                    .Product__Item{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item1{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item__Button{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item__Button2{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+@media (max-width:768px) {
+    .Product__Detail{
+        .container{
+            .Detail-crs{
+                display: flex;
+                flex-direction: column;
+                .Product__Detail__right{
+                    .Product__Item{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item1{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item__Button{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item__Button2{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+@media (max-width:992px) {
+    .Product__Detail{
+        .container{
+            .Detail-crs{
+                display: flex;
+                // flex-direction: column;
+                .Product__Detail__right{
+                    .Product__Item{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item1{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item__Button{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                    .Product__Item__Button2{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+@media (max-width:1200px) {
+    .Product__Detail{
+        .container{
+            .Detail-crs{
+                display: flex;
+                // flex-direction: column;
                 .Product__Detail__right{
                     .Product__Item{
                         margin-left: 0;

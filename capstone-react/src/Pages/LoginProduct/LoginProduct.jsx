@@ -26,7 +26,7 @@ export default function LoginProduct() {
       console.log(values);
       dispatch(getLoginApi(values))
       alert("đăng nhâp thành công")
-      navigate("/home")
+      navigate("/profile")
     },
   });
 
@@ -34,18 +34,17 @@ export default function LoginProduct() {
 
   return (
     <section>
-      <div className="container">
+      <div className="login-page">
         <div className="login-title">
           <h3>Login</h3>
-          <hr />
         </div>
         <form
-          className="form"
+          className="loginForm"
           id="formLogin"
           onSubmit={frm.handleSubmit}
         >
           <div className="formlable">
-            <div className="form-floating mb-3">
+            <div className="form-group  mb-3">
               <input
                 type="email"
                 className="form-control"
@@ -62,9 +61,9 @@ export default function LoginProduct() {
               ) : (
                 ""
               )}
-              <label htmlFor="floatingInput">Email</label>
+              <label htmlFor="floatingInput" style={{fontSize: 20}}>Email</label>
             </div>
-            <div className="form-floating">
+            <div className="form-group">
               <input
                 type="password"
                 className="form-control"
@@ -81,9 +80,9 @@ export default function LoginProduct() {
               ) : (
                 ""
               )}
-              <label htmlFor="floatingPassword">Password</label>
+              <label htmlFor="floatingPassword" style={{fontSize: 20}}>Password</label>
             </div>
-            <div className="button-login">
+            <div className="navigate">
               <a href="" className="register-now">
                 Register Now?
               </a>

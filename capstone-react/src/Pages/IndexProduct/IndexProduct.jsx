@@ -94,7 +94,7 @@ export default function IndexProduct() {
         <div className="container">
           <div
             id="carouselExampleIndicators"
-            className="carousel slide"
+            className="carousel slide" 
             data-bs-ride="carousel"
           >
             <div id="product-carousel" className="carousel-inner">

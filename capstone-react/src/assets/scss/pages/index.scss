@@ -139,7 +139,111 @@
   @media (max-width:576px) {
     .slider {
       position: relative;
-
+      .container {
+        #carouselExampleIndicators {
+          .carousel-inner {
+            .carousel-item {
+              &-content {
+                display: flex;
+                flex-direction: column;
+                padding: 0 100px;
+    
+                .carousel-right {
+                  padding: 0;
+                  text-align: left;
+                  
+                  h2 {
+                    font-size: 30px;
+                  }
+    
+                  p {
+                    font-size: 17px;
+                  }
+    
+                  .btn {
+                    background-color: #f8b653;
+                    border-radius: 0;
+                    color: #fff;
+                    padding: 13px 35px;
+                    font-size: 20px;
+                    letter-spacing: 1px;
+                    font-weight: 200;
+                  }
+                }
+              }
+            }
+          }
+    
+          .carousel-control-next {
+            &-icon {
+              display: none;
+            }
+          }
+    
+          .carousel-control-prev {
+            &-icon {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width:768px) {
+    .slider {
+      position: relative;
+      .container {
+        #carouselExampleIndicators {
+          .carousel-inner {
+            .carousel-item {
+              &-content {
+                display: flex;
+                flex-direction: column;
+                padding: 0 100px;
+    
+                .carousel-right {
+                  padding: 0
+    
+                  h2 {
+                    font-size: 40px;
+                  }
+    
+                  p {
+                    font-size: 20px;
+                  }
+    
+                  .btn {
+                    background-color: #f8b653;
+                    border-radius: 0;
+                    color: #fff;
+                    padding: 13px 35px;
+                    font-size: 20px;
+                    letter-spacing: 1px;
+                    font-weight: 200;
+                  }
+                }
+              }
+            }
+          }
+    
+          .carousel-control-next {
+            &-icon {
+              display: none;
+            }
+          }
+    
+          .carousel-control-prev {
+            &-icon {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width:992px) {
+    .slider {
+      position: relative;
       .container {
         #carouselExampleIndicators {
           .carousel-inner {
@@ -150,7 +254,7 @@
                 padding: 0 100px;
     
                 .carousel-right {
-                  padding: 0 80px;
+                  padding: 0
     
                   h2 {
                     font-size: 40px;

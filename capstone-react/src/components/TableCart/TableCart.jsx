@@ -41,6 +41,7 @@ const TableCart = () => {
           <div>
             <button
               className="btn quantity-plus"
+              style={{marginRight:10, backgroundColor:'rgb(99 132 240)'}}
               onClick={() => {
                 dispatch(changeQuantityCart({ type: true, id: id }));
               }}
@@ -50,6 +51,7 @@ const TableCart = () => {
             <span className="span quantity-span">{quantity}</span>
             <button
               className="btn quantity-minus"
+              style={{marginLeft:10, backgroundColor:'rgb(99 132 240)'}}
               onClick={() => {
                 dispatch(changeQuantityCart({ type: false, id: id }));
               }}
@@ -70,9 +72,10 @@ const TableCart = () => {
       render: (id) => {
         return (
           <div>
-            <button className="btn action-edit">Edit</button>
+            <button className="btn action-edit" style={{backgroundColor: 'rgb(224 176 109)', marginRight:10}}>Edit</button>
             <button
               className="btn action-delete"
+              style={{backgroundColor: 'rgb(204 204 204)'}}
               onClick={() => {
                 dispatch(removeFromCart(id));
               }}
